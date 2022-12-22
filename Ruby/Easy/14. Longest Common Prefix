@@ -1,0 +1,38 @@
+# @param {String[]} strs
+# @return {String}
+def longest_common_prefix(strs)
+    split_strings = []
+    strs.each do |string|
+        split_strings << string.split('')
+    end
+    i = 0
+    letterI = 0
+    correct = []
+    continue = true
+    if strs == []
+        return strs.join
+    end
+    while continue == true && strs.length > 1
+        if split_strings[i] == []
+            return ""
+        end
+        while i <= split_strings.length
+            if i < split_strings.length - 1 && split_strings[i][letterI] != split_strings[i+1][letterI]
+                p "fails"
+                continue = false
+            elsif i < split_strings.length - 1 && split_strings[i][letterI] == split_strings[i+1][letterI]
+                p "letter match"
+                i += 1
+            else  
+                p "letter matched all, next letter reset words"
+                i = 0
+                correct << split_strings[i][letterI]
+                letterI += 1
+            end
+            p i
+            p letterI
+        end
+        p correct
+    end
+    return correct.join
+end
