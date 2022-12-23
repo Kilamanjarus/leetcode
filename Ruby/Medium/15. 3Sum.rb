@@ -2,28 +2,32 @@ def three_sum(nums)
   i = 0
   output = []
   nums = nums.sort()
+
   if nums.uniq == [0]
     output << [0, 0, 0]
   end
+
   nums.each_with_index do |i, index|
     next if i == nums[index - 1] && index != 0
+    break if i > 0
     left = index + 1
     right = nums.length - 1
-    while left < nums.length - 1 && nums[index] != nums[index - 1] && right > left
-      if nums[index] + nums[left] + nums[right] == 0 && output.include?([nums[index], nums[left], nums[right]].sort()) == false
-        output << [nums[index], nums[left], nums[right]].sort()
-      end
-      if nums[index] + nums[left] + nums[right] > 0
+
+    while nums[index] != nums[index - 1] && right > left
+      sum = nums[index] + nums[left] + nums[right]
+
+      if sum > 0
         right -= 1
-      elsif nums[index] + nums[left] + nums[right] < 0
+      elsif sum < 0
         left += 1
       else
+        output << [nums[index], nums[left], nums[right]].sort()
         left += 1
         right -= 1
       end
     end
   end
-  return output
+  return output.uniq
 end
 
 #It works, however it needs to be faster as it exceeds the time limit
