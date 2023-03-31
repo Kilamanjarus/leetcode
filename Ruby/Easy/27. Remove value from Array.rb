@@ -2,11 +2,6 @@
 # @param {Integer} val
 # @return {Integer}
 def remove_element(nums, val)
-  k = []
-  nums.each do |num, index|
-    if num == val
-      nums.remove(index)
-    end
-  end
+  nums.delete(val)
   nums && nums.length
 end
