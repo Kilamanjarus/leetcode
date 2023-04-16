@@ -1,11 +1,10 @@
 # @param {String} s
 # @return {Boolean}
 def is_palindrome(s)
-  p s.gsub(/[\s,:;._!@#$%^&*()[]{}'"\/\\]/ ,"")
-  if s.gsub(/[\s,:;._!@#$%^&*()[]{}'"\/\\]/ ,"")
-== ""
-      return true
+  p s.gsub(/[^0-9a-z]/i, "")
+  if s.gsub(/[^0-9a-z]/i, "") == ""
+    return true
   else
-      return s.gsub(/[\s,:;._!@#$%^&*()[]{}'"\/\\]/ ,"").downcase() == s.gsub(/[\s,:;._!@#$%^&*()[]{}'"\/\\]/ ,"").downcase().reverse
+    return s.gsub(/[^0-9a-z]/i, "").downcase() == s.gsub(/[^0-9a-z]/i, "").downcase().reverse
   end
 end
