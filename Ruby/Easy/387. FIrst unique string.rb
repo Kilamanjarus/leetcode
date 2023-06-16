@@ -1,5 +1,5 @@
 def first_uniq_char(s)
-  char_count = Hash.new
+  char_count = Hash.new(0)
   s.each_char do |char|
     char_count[char] += 1
   end
