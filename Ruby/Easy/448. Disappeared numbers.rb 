@@ -1,0 +1,14 @@
+# @param {Integer[]} nums
+# @return {Integer[]}
+def find_disappeared_numbers(nums)
+  n = nums.length
+  missing_numbers = []
+  nums.each do |num|
+    index = num.abs - 1
+    nums[index] = -nums[index].abs
+  end
+  nums.each_with_index do |num, index|
+    missing_numbers << index + 1 if num.positive?
+  end
+  missing_numbers
+end
