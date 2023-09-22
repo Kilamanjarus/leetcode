@@ -63,3 +63,4 @@ def linked_list_to_array(head)
   end
   result
 end
+d
